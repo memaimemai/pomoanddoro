@@ -1,1 +1,2 @@
 - [ ] Referenzen und Pointer richtig übergeben.
+- [ ] newSettings in die txt Datei schreiben

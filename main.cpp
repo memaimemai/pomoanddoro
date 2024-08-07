@@ -1,4 +1,3 @@
-#include <cwchar>
 #include<iostream>
 #include <stdlib.h>
 #include <fstream>
@@ -15,8 +14,16 @@ class Settings {
 			myfile.close();
 		}
 
-		void changePomo() {
-
+	void changePomo() {
+	myfile.open("settings.txt");
+	system("clear");
+	cout << "How long should one Pomodoro be? (minutes)" << endl;
+	cin >> t_pomo;
+	string newSettings = to_string(t_pomo) + "\n";
+	 newSettings = newSettings + to_string(t_amount) + "\n";
+	 newSettings = newSettings + to_string(t_shortBreak) + "\n";
+	 newSettings = newSettings + to_string(t_longBreak) + "\n";
+	cout << newSettings << endl;
     }
     void changeLength() {
 

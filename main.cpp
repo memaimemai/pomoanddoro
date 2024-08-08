@@ -9,7 +9,7 @@ void createPomo() {
     pomoSettings setti;
     pomoSettings* pSetti = &setti;
     pomoPrinter printi(pSetti);
-  //  pomoPomo pomori(*setti);
+    pomoPomo pomori(*setti);
 }
 
 int main() {

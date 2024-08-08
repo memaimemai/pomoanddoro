@@ -10,36 +10,60 @@ class Settings {
 	public:
 		Settings() {
 			myfile.open("settings.txt");
-			setSettings();
+			initSettings();
 			myfile.close();
 		}
 
-	void changePomo() {
+		void writeSettings() {
 	myfile.open("settings.txt");
+		string newSettings = to_string(t_pomo) + "\n";
+			 newSettings = newSettings + to_string(t_amount) + "\n";
+			 newSettings = newSettings + to_string(t_shortBreak) + "\n";
+			 newSettings = newSettings + to_string(t_longBreak) + "\n";
+			cout << newSettings << endl;
+			myfile << newSettings;
+			myfile.close();
+		}
+
+
+	void changePomo() {
 	system("clear");
 	cout << "How long should one Pomodoro be? (minutes)" << endl;
 	cin >> t_pomo;
-	string newSettings = to_string(t_pomo) + "\n";
-	 newSettings = newSettings + to_string(t_amount) + "\n";
-	 newSettings = newSettings + to_string(t_shortBreak) + "\n";
-	 newSettings = newSettings + to_string(t_longBreak) + "\n";
-	cout << newSettings << endl;
-    }
-    void changeLength() {
+	writeSettings();
+	    }
 
+    void changeAmount() {
+    system("clear");
+	cout << "How many Rounds of Pomos do you want?" << endl;
+	cin >> t_amount;
+	writeSettings();
     }
+
     void changeShortbreak() {
-
+    system("clear");
+	cout << "How long is a shortbreak?(minutes)" << endl;
+	cin >> t_shortBreak;
+	writeSettings();
     }
+
     void changeLongbreak() {
+    system("clear");
+	cout << "How long is a long break?(minutes)" << endl;
+	cin >> t_shortBreak;
+	writeSettings();
+        }
 
-    }
     void changeAll() {
-
+        changePomo();
+        changeAmount();
+        changeShortbreak();
+        changeLongbreak();
     }
+
 
 	private:
-		void setSettings () {
+		void initSettings () {
 		string line;
 		for (int i = 0; i < 4; ++i) {
 		getline(myfile,line);
@@ -82,6 +106,7 @@ class Printer {
     Printer(Settings* rules) : setto(rules) {
         printMainMenu();
     }
+    friend Settings;
         private:
         Settings* setto = nullptr;
     void printSettingsMenu() {
@@ -99,7 +124,7 @@ class Printer {
           setto -> changePomo();
           break;
           case 2:
-          setto -> changeLength();
+          setto -> changeAmount();
           break;
           case 3:
           setto -> changeShortbreak();
@@ -130,6 +155,7 @@ void printMainMenu() {
        }
       case 2:
       printSettingsMenu();
+      printMainMenu();
    }
 	}
 };

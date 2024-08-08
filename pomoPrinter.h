@@ -16,5 +16,7 @@ class pomoPrinter {
         int getAnswerAmount();
     public:
         void printMainMenu();
+        void printProgress(double curPercent);
+
 };
 #endif

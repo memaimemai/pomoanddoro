@@ -1,5 +1,6 @@
 #include"pomoPrinter.h"
 #include <cstddef>
+#include "pomoPomo.h"
 using namespace std;
 
 pomoSettings* setto = NULL;
@@ -29,6 +30,22 @@ void pomoPrinter::printMainMenu() {
     }
 }
 
+void pomoPrinter::printProgress(double curPercent) {
+    int barWidth = 70;
+    int pos = barWidth * curPercent;
+    cout << "{";
+    for (int i = 0; i < barWidth; ++i) {
+            if (i < pos) {
+            cout << "-";
+            } else if ( i == pos ) {
+            cout << ">"; 
+            } else {
+            cout << " ";
+            }
+    }
+            cout << "} " << int(curPercent * 100.0) << "%\r";
+            cout.flush();
+}
 void pomoPrinter::printSettingsMenu() {
     int temp_Answer;
     //system("clear");
